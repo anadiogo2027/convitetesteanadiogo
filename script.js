@@ -42,19 +42,35 @@ function downloadCalendarEvent() {
   URL.revokeObjectURL(link.href);
 }
 
-document.querySelector("#rsvp-form").addEventListener("submit", (event) => {
-  event.preventDefault();
+const rsvpForm = document.querySelector("#rsvp-form");
+
+rsvpForm.addEventListener("submit", () => {
   const status = document.querySelector("#form-status");
-  status.textContent = "Demonstração concluída — nesta versão de teste a resposta ainda não foi guardada.";
-  status.classList.add("success");
+  const diet = rsvpForm.elements.diet.value.trim();
+  const message = rsvpForm.elements.message.value.trim();
+  const notes = [
+    diet && `Restrições alimentares: ${diet}`,
+    message && `Mensagem: ${message}`,
+  ].filter(Boolean).join("\n\n");
+
+  document.querySelector("#google-notes").value = notes || "Sem observações";
+  status.textContent = "A enviar a confirmação…";
+  status.classList.remove("success");
+
+  window.setTimeout(() => {
+    status.textContent = "Confirmação enviada. Obrigado!";
+    status.classList.add("success");
+    rsvpForm.reset();
+    document.querySelector(".children-details").hidden = true;
+  }, 900);
 });
 
 const childrenDetails = document.querySelector(".children-details");
-document.querySelectorAll('input[name="children"]').forEach((radio) => {
+document.querySelectorAll('input[name="entry.800389479"]').forEach((radio) => {
   radio.addEventListener("change", () => {
-    const hasChildren = radio.value === "sim" && radio.checked;
+    const hasChildren = radio.value === "Sim" && radio.checked;
     childrenDetails.hidden = !hasChildren;
-    childrenDetails.querySelector("textarea").required = hasChildren;
+    childrenDetails.querySelector("select").required = hasChildren;
   });
 });
 
