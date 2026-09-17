@@ -61,7 +61,12 @@ rsvpForm.addEventListener("submit", () => {
     status.textContent = "Confirmação enviada. Obrigado!";
     status.classList.add("success");
     rsvpForm.reset();
-    document.querySelector(".children-details").hidden = true;
+    const childrenField = document.querySelector(".children-details");
+    const companionField = document.querySelector(".companion-details");
+    childrenField.hidden = true;
+    childrenField.querySelector("select").required = false;
+    companionField.hidden = true;
+    companionField.querySelector("input").required = false;
   }, 900);
 });
 
@@ -70,7 +75,20 @@ document.querySelectorAll('input[name="entry.800389479"]').forEach((radio) => {
   radio.addEventListener("change", () => {
     const hasChildren = radio.value === "Sim" && radio.checked;
     childrenDetails.hidden = !hasChildren;
-    childrenDetails.querySelector("select").required = hasChildren;
+    const childrenCount = childrenDetails.querySelector("select");
+    childrenCount.required = hasChildren;
+    if (!hasChildren) childrenCount.value = "";
+  });
+});
+
+const companionDetails = document.querySelector(".companion-details");
+document.querySelectorAll('input[name="entry.902797223"]').forEach((radio) => {
+  radio.addEventListener("change", () => {
+    const hasCompanion = radio.value === "Sim" && radio.checked;
+    companionDetails.hidden = !hasCompanion;
+    const companionName = companionDetails.querySelector("input");
+    companionName.required = hasCompanion;
+    if (!hasCompanion) companionName.value = "";
   });
 });
 
