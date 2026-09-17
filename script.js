@@ -46,14 +46,6 @@ const rsvpForm = document.querySelector("#rsvp-form");
 
 rsvpForm.addEventListener("submit", () => {
   const status = document.querySelector("#form-status");
-  const diet = rsvpForm.elements.diet.value.trim();
-  const message = rsvpForm.elements.message.value.trim();
-  const notes = [
-    diet && `Restrições alimentares: ${diet}`,
-    message && `Mensagem: ${message}`,
-  ].filter(Boolean).join("\n\n");
-
-  document.querySelector("#google-notes").value = notes || "Sem observações";
   status.textContent = "A enviar a confirmação…";
   status.classList.remove("success");
 
