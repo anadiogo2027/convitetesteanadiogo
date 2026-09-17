@@ -90,18 +90,20 @@
     </section>
 
     <section class="rsvp-section pink-section" id="rsvp" aria-labelledby="rsvp-title">
-      <div class="rsvp-heading"><p class="eyebrow">RSVP</p><h2 id="rsvp-title">Contamos convosco?</h2><p>Este formulário é apenas uma demonstração visual. Quando o convite estiver pronto, ficará ligado ao registo real das respostas.</p></div>
-      <form class="rsvp-form" id="rsvp-form">
-        <label>Nome completo<input type="text" name="name" autocomplete="name" required></label>
-        <fieldset><legend>Vão estar presentes?</legend><label class="choice"><input type="radio" name="attendance" value="sim" required><span>Sim, com todo o gosto</span></label><label class="choice"><input type="radio" name="attendance" value="nao"><span>Não vamos conseguir</span></label></fieldset>
-        <label>Número de pessoas<select name="guests"><option value="1">1 pessoa</option><option value="2">2 pessoas</option><option value="3">3 pessoas</option><option value="4">4 pessoas</option></select></label>
-        <label>Nome da pessoa acompanhante<input type="text" name="companion_name" autocomplete="name" placeholder="Se aplicável"></label>
-        <fieldset><legend>Vêm crianças?</legend><label class="choice"><input type="radio" name="children" value="sim"><span>Sim</span></label><label class="choice"><input type="radio" name="children" value="nao"><span>Não</span></label></fieldset>
-        <label class="children-details" hidden>Nome e idade das crianças<textarea name="children_details" rows="3" placeholder="Ex.: Maria, 6 anos"></textarea></label>
+      <div class="rsvp-heading"><p class="eyebrow">RSVP</p><h2 id="rsvp-title">Contamos convosco?</h2><p>Preencham a confirmação abaixo. A resposta será guardada de forma segura no nosso registo de convidados.</p></div>
+      <form class="rsvp-form" id="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSe_m8oymJ4H9ksOo-1yFOaFzgGERP8LACz2QGgLLDG2UqUd4g/formResponse" method="post" target="google-form-response">
+        <label>Nome completo<input type="text" name="entry.984226532" autocomplete="name" required></label>
+        <fieldset><legend>Vão estar presentes?</legend><label class="choice"><input type="radio" name="entry.1143528005" value="Sim" required><span>Sim, com todo o gosto</span></label><label class="choice"><input type="radio" name="entry.1143528005" value="Não"><span>Não vamos conseguir</span></label></fieldset>
+        <fieldset><legend>Vem acompanhado(a)?</legend><label class="choice"><input type="radio" name="entry.902797223" value="Sim" required><span>Sim</span></label><label class="choice"><input type="radio" name="entry.902797223" value="Não"><span>Não</span></label></fieldset>
+        <label>Nome da pessoa acompanhante<input type="text" name="entry.1655237235" autocomplete="name" placeholder="Se aplicável"></label>
+        <fieldset><legend>Vêm crianças?</legend><label class="choice"><input type="radio" name="entry.800389479" value="Sim" required><span>Sim</span></label><label class="choice"><input type="radio" name="entry.800389479" value="Não"><span>Não</span></label></fieldset>
+        <label class="children-details" hidden>Quantas crianças?<select name="entry.957989463"><option value="">Selecionar</option><option value="1">1 criança</option><option value="2">2 crianças</option><option value="3">3 crianças</option><option value="4">4 crianças</option><option value="5">5 crianças</option></select></label>
         <label>Restrições alimentares<textarea name="diet" rows="3" placeholder="Alergias, intolerâncias ou preferências"></textarea></label>
         <label>Mensagem para os noivos<textarea name="message" rows="4" placeholder="Escrevam-nos umas palavras"></textarea></label>
+        <input type="hidden" name="entry.1793920255" id="google-notes">
         <button class="button" type="submit">Enviar confirmação</button><p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
+      <iframe name="google-form-response" title="Envio da confirmação" hidden></iframe>
     </section>
   </main>
   <footer><p>28 · 08 · 2027</p><img src="assets/cao-envelope.png" alt="Ilustração de um cão a espreitar com um envelope na boca"></footer>
